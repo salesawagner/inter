@@ -1,0 +1,58 @@
+name: inter
+settings:
+  MARKETING_VERSION: "1.0.0"
+  SWIFT_VERSION: 5.0
+  VERSIONING_SYSTEM: "apple-generic"
+  CODE_SIGN_IDENTITY: "iPhone Developer"
+  CLANG_ENABLE_OBJC_WEAK: "YES"
+  ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: "YES"
+
+options:
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "17.0"
+
+configs:
+  Debug: debug
+  Release: release
+
+targets:
+  inter:
+    platform: iOS
+    type: application
+    deploymentTarget: "17.0"
+    sources: [inter]
+
+    settings:
+      CODE_SIGN_STYLE: "Manual"
+      DEVELOPMENT_TEAM: ""
+      PRODUCT_BUNDLE_IDENTIFIER: br.com.wagnersales.inter
+      INFOPLIST_FILE: inter/Info.plist
+
+  interTests:
+    platform: iOS
+    type: bundle.unit-test
+
+    sources:
+      - path: interTests
+
+    dependencies:
+      - target: inter
+
+schemes:
+  inter:
+    build:
+      targets:
+        inter: [run, test]
+      parallelizeBuild: true
+      buildImplicitDependencies: true
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - inter
+      targets:
+        - interTests

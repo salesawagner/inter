@@ -1,0 +1,6 @@
+framework module Pods_inter {
+  umbrella header "Pods-inter-umbrella.h"
+
+  export *
+  module * { export * }
+}
