@@ -32,7 +32,7 @@ $  pod install
 Abrir o arquivo: [API.xcworkspace](API/API.xcworkspace)
 
 ### - APP  
-Responsável pela aplicação UI: [MB.xcworkspace](APP/MB.xcworkspace). Para fazer o setup basta ir na pasta [APP](APP/) e rodar os comandos no terminal:
+Responsável pela aplicação UI: [inter.xcworkspace](APP/inter.xcworkspace). Para fazer o setup basta ir na pasta [APP](APP/) e rodar os comandos no terminal:
 
 ![Coverage](https://img.shields.io/badge/Coverage-74-blue)
 
