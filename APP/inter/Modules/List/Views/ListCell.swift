@@ -43,16 +43,14 @@ final class ListCell: UITableViewCell {
         setupThumbnail()
         setupLabels()
         setupStackView()
-        accessoryType = .disclosureIndicator
+        selectionStyle = .none
     }
 
     private func setupThumbnail() {
         let size = 80.0
         thumbnail.contentMode = .scaleAspectFill
         thumbnail.clipsToBounds = true
-        thumbnail.layer.cornerRadius = size/2
-        thumbnail.layer.borderWidth = 4
-        thumbnail.layer.borderColor = UIColor.white.cgColor
+        thumbnail.layer.cornerRadius = 8
 
         NSLayoutConstraint.activate([
             thumbnail.widthAnchor.constraint(equalToConstant: size),
@@ -81,10 +79,25 @@ final class ListCell: UITableViewCell {
         stackViewHorizontal.axis = .horizontal
         stackViewHorizontal.alignment = .top
         stackViewHorizontal.spacing = 3*spacing
+
         stackViewHorizontal.addArrangedSubview(thumbnail)
         stackViewHorizontal.addArrangedSubview(stackViewVertical)
 
-        stackViewHorizontal.fill(on: self, insets: .all(constant: 2*spacing))
+        let contentView = UIView()
+        contentView.backgroundColor = .white
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 8
+
+        let shadowView = UIView()
+        shadowView.backgroundColor = .clear
+        shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+        shadowView.layer.shadowOpacity = 0.2
+        shadowView.layer.shadowRadius = 8
+        shadowView.layer.shadowOffset = .init(width: 0, height: 8)
+
+        stackViewHorizontal.fill(on: contentView, insets: .all(constant: 2*spacing))
+        contentView.fill(on: shadowView)
+        shadowView.fill(on: self, insets: .all(constant: 2*spacing))
     }
 
     // MARK: Internal Methods
