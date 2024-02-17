@@ -44,6 +44,7 @@ class WASTableViewController: UIViewController {
         tableView.sectionFooterHeight = 8
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.separatorColor = .clear
         tableView.fill(on: view)
     }
 }

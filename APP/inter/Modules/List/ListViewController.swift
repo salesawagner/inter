@@ -115,7 +115,6 @@ extension ListViewController: UITableViewDataSource {
         let row = viewModel.rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier) as? ListCell
         cell?.setup(with: row)
-        cell?.backgroundColor = (indexPath.row % 2 == 0) ? .lightGray : .gray
 
         return cell ?? UITableViewCell()
     }
